@@ -1,0 +1,48 @@
+{
+    "name": "fruiter/ai-moderation",
+    "description": "AI 内容合规审核扩展：基于任意 OpenAI 兼容 API 自动检查用户发布的内容（Flarum 1.8+ / PHP 7.4+）。",
+    "type": "flarum-extension",
+    "keywords": [
+        "flarum",
+        "extension",
+        "moderation",
+        "ai",
+        "openai",
+        "content",
+        "compliance"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CNFruiter",
+            "homepage": "https://github.com/CNFruiter"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/CNFruiter/flarum-ai-moderation/issues",
+        "source": "https://github.com/CNFruiter/flarum-ai-moderation"
+    },
+    "require": {
+        "php": ">=7.4.0",
+        "flarum/core": "^1.8.0",
+        "guzzlehttp/guzzle": "^6.0 || ^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "fruiter\\AiModeration\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "AI Moderation",
+            "icon": {
+                "name": "fas fa-robot",
+                "backgroundColor": "#2f6fed",
+                "color": "#ffffff"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

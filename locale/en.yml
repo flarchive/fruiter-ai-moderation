@@ -1,0 +1,35 @@
+fruiter-ai-moderation:
+  admin:
+    settings:
+      enabled_label: Enable AI moderation
+      enabled_help: Automatically check new and edited posts with an OpenAI-compatible AI service.
+      api_base_url_label: API Base URL
+      api_base_url_help: >-
+        OpenAI-compatible endpoint (without the /chat/completions suffix).
+        Examples: https://api.openai.com/v1, https://api.deepseek.com/v1,
+        https://api.moonshot.cn/v1, http://localhost:11434/v1 (Ollama)
+      api_key_label: API Key
+      api_key_help: Leave blank if your provider does not require one (e.g. local Ollama / LM Studio).
+      model_label: Model
+      model_help: e.g. gpt-4o-mini, deepseek-chat, moonshot-v1-8k, glm-4-flash, qwen-plus, or your local model id.
+      custom_instructions_label: Custom instructions
+      custom_instructions_help: Extra rules appended to the built-in moderation prompt.
+      action_label: Action on violation
+      action_help: What happens when content is judged non-compliant.
+      action_hide_and_flag: Hide content and flag for review (Recommended)
+      action_hide: Hide content only
+      action_flag: Flag for review only (keep visible)
+      action_reject: Reject the submission (show an error to the author)
+      check_title_label: Include the discussion title
+      check_title_help: The title is checked together with the first post, and on discussion renames.
+      max_chars_label: Max characters sent to the AI
+      timeout_label: Request timeout (seconds)
+      allow_on_error_label: Allow content when the AI service errors
+      allow_on_error_help: If disabled, posting is rejected with an error message when the AI service is unavailable.
+      json_mode_label: Strict JSON mode (response_format)
+      json_mode_help: >-
+        Enable only if your provider supports OpenAI's response_format
+        json_object (OpenAI, DeepSeek, Moonshot...). Keep off for
+        Ollama / LM Studio / vLLM.
+      reject_message_label: Rejection message shown to the author
+      test_button: Test connection

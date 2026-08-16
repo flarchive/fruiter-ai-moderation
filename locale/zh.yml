@@ -1,0 +1,34 @@
+fruiter-ai-moderation:
+  admin:
+    settings:
+      enabled_label: 启用 AI 内容审核
+      enabled_help: 使用 OpenAI 兼容的 AI 服务自动检查新发布与编辑后的帖子。
+      api_base_url_label: API 基础地址
+      api_base_url_help: >-
+        OpenAI 兼容接口地址（不含 /chat/completions 后缀）。例如：
+        https://api.openai.com/v1、https://api.deepseek.com/v1、
+        https://api.moonshot.cn/v1、http://localhost:11434/v1（Ollama）
+      api_key_label: API 密钥
+      api_key_help: 如果服务商不需要密钥（如本地 Ollama / LM Studio）可留空。生产环境建议改用 config.php 保存密钥。
+      model_label: 模型名称
+      model_help: 例如 gpt-4o-mini、deepseek-chat、moonshot-v1-8k、glm-4-flash、qwen-plus 或本地模型 ID。
+      custom_instructions_label: 自定义指令（可选）
+      custom_instructions_help: 追加到内置审核提示词之后的额外审核规则。
+      action_label: 违规处理方式
+      action_help: 内容被判定为不合规时的处理方式。
+      action_hide_and_flag: 隐藏内容并标记待管理员审核（推荐）
+      action_hide: 仅隐藏内容
+      action_flag: 仅标记待审核（内容保持可见）
+      action_reject: 拒绝发布（向作者显示错误提示）
+      check_title_label: 一并检查讨论标题
+      check_title_help: 标题会随首帖一起检查，并在讨论被重命名时单独检查。
+      max_chars_label: 发送给 AI 的最大字符数
+      timeout_label: 请求超时（秒）
+      allow_on_error_label: AI 服务出错时放行内容
+      allow_on_error_help: 关闭后，AI 服务不可用时发帖会被拒绝并提示错误。
+      json_mode_label: 严格 JSON 模式（response_format）
+      json_mode_help: >-
+        仅当服务商支持 OpenAI 的 response_format json_object 时开启
+        （OpenAI、DeepSeek、Moonshot 等）。Ollama / LM Studio / vLLM 请保持关闭。
+      reject_message_label: 拒绝发布时向作者显示的消息
+      test_button: 测试连接
