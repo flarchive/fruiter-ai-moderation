@@ -1,0 +1,56 @@
+fruiter-ai-moderation:
+  admin:
+    settings:
+      enabled_label: Enable AI moderation
+      enabled_help: Automatically check new and edited posts with an OpenAI-compatible AI service.
+      api_base_url_label: API Base URL
+      api_base_url_help: >-
+        OpenAI-compatible endpoint (without the /chat/completions suffix).
+        Examples: https://api.openai.com/v1, https://api.deepseek.com/v1,
+        https://api.moonshot.cn/v1, http://localhost:11434/v1 (Ollama)
+      api_key_label: API key (single provider)
+      api_key_help: Used when you configure a single AI provider. For multiple providers use "AI providers" below. In production, prefer storing the key in config.php.
+      providers_label: AI providers (multiple sources)
+      providers_help: >-
+        JSON array; each entry is one provider (random load balancing to spread
+        concurrency / rate limits). Takes precedence over the single-provider
+        settings above. Example:
+        [{"api_base_url": "https://api.deepseek.com/v1", "api_key": "sk-xxx", "model": "deepseek-chat"},
+        {"api_base_url": "https://api.moonshot.cn/v1", "api_key": "sk-yyy", "model": "moonshot-v1-8k"}]
+        Optional per entry: json_mode (use response_format strict JSON). Can also be
+        configured in config.php under ai-moderation.providers.
+      model_label: Model
+      model_help: e.g. gpt-4o-mini, deepseek-chat, moonshot-v1-8k, glm-4-flash, qwen-plus, or your local model id.
+      custom_instructions_label: Custom instructions
+      custom_instructions_help: Extra rules appended to the built-in moderation prompt.
+      action_label: Action on violation
+      action_help: What happens when content is judged non-compliant.
+      action_hide_and_flag: Hide content and flag for review (Recommended)
+      action_hide: Hide content only
+      action_flag: Flag for review only (keep visible)
+      action_reject: Reject the submission (show an error to the author)
+      check_title_label: Include the discussion title
+      check_title_help: The title is checked together with the first post, and on discussion renames.
+      max_chars_label: Max characters sent to the AI
+      timeout_label: Request timeout (seconds)
+      allow_on_error_label: Allow content when the AI service errors
+      allow_on_error_help: If disabled, posting is rejected with an error message when the AI service is unavailable.
+      json_mode_label: Strict JSON mode (response_format)
+      json_mode_help: >-
+        Enable only if your provider supports OpenAI's response_format
+        json_object (OpenAI, DeepSeek, Moonshot...). Keep off for
+        Ollama / LM Studio / vLLM.
+      reject_message_label: Rejection message shown to the author
+      long_content_chars_label: Long content threshold (characters)
+      long_content_help: Content longer than this is published first and moderated in the background; short content is moderated before publishing.
+      defer_long_content_label: Defer moderation of long content
+      defer_long_content_help: Long content enters a deferred moderation queue after publishing (via php flarum ai-moderation:process / cron).
+      defer_on_timeout_label: Defer moderation on timeout
+      defer_on_timeout_help: When the AI response times out (e.g. slow model), allow publishing first and audit later, so users do not wait too long.
+      notify_author_label: Notify the author on violation
+      notify_author_help: Send the author an in-app notification explaining why their content was hidden/flagged.
+      test_button: Test connection
+  forum:
+    notifications:
+      content_moderated_text: Your post did not pass content moderation and has been hidden.
+      content_moderated_detail: 'Your post did not pass content moderation and has been hidden. Reason: {detail}'

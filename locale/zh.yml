@@ -1,0 +1,53 @@
+fruiter-ai-moderation:
+  admin:
+    settings:
+      enabled_label: 启用 AI 内容审核
+      enabled_help: 使用 OpenAI 兼容的 AI 服务自动检查新发布与编辑后的帖子。
+      api_base_url_label: API 基础地址
+      api_base_url_help: >-
+        OpenAI 兼容接口地址（不含 /chat/completions 后缀）。例如：
+        https://api.openai.com/v1、https://api.deepseek.com/v1、
+        https://api.moonshot.cn/v1、http://localhost:11434/v1（Ollama）
+      api_key_label: API 密钥（单来源）
+      api_key_help: 仅配置一个 AI 来源时使用。配置多来源请用下面的"多 AI 来源（提供商）"。生产环境建议改用 config.php 保存密钥。
+      providers_label: 多 AI 来源（提供商）
+      providers_help: >-
+        JSON 数组，每项一个提供商（随机负载均衡，分摊并发与限流），优先于上面的单来源设置。
+        示例：
+        [{"api_base_url": "https://api.deepseek.com/v1", "api_key": "sk-xxx", "model": "deepseek-chat"},
+        {"api_base_url": "https://api.moonshot.cn/v1", "api_key": "sk-yyy", "model": "moonshot-v1-8k"}]
+        可选字段：json_mode（是否用 response_format 严格 JSON）。也可在 config.php 的 ai-moderation.providers 配置。
+      model_label: 模型名称
+      model_help: 例如 gpt-4o-mini、deepseek-chat、moonshot-v1-8k、glm-4-flash、qwen-plus 或本地模型 ID。
+      custom_instructions_label: 自定义指令（可选）
+      custom_instructions_help: 追加到内置审核提示词之后的额外审核规则（写法与示例见仓库 docs/custom-instructions.md）。
+      action_label: 违规处理方式
+      action_help: 内容被判定为不合规时的处理方式。
+      action_hide_and_flag: 隐藏内容并标记待管理员审核（推荐）
+      action_hide: 仅隐藏内容
+      action_flag: 仅标记待审核（内容保持可见）
+      action_reject: 拒绝发布（向作者显示错误提示）
+      check_title_label: 一并检查讨论标题
+      check_title_help: 标题会随首帖一起检查，并在讨论被重命名时单独检查。
+      max_chars_label: 发送给 AI 的最大字符数
+      timeout_label: 请求超时（秒）
+      allow_on_error_label: AI 服务出错时放行内容
+      allow_on_error_help: 关闭后，AI 服务不可用时发帖会被拒绝并提示错误。
+      json_mode_label: 严格 JSON 模式（response_format）
+      json_mode_help: >-
+        仅当服务商支持 OpenAI 的 response_format json_object 时开启
+        （OpenAI、DeepSeek、Moonshot 等）。Ollama / LM Studio / vLLM 请保持关闭。
+      reject_message_label: 拒绝发布时向作者显示的消息
+      long_content_chars_label: 长文本阈值（字符数）
+      long_content_help: 超过该长度的内容先发布、后台延迟审核；短文本先审核后发布。
+      defer_long_content_label: 长文本先发布后审核
+      defer_long_content_help: 长文本发布后进入延迟审核队列（配合 php flarum ai-moderation:process / cron）。
+      defer_on_timeout_label: 审核超时也先发布后审核
+      defer_on_timeout_help: AI 响应超时（如模型较慢）时先放行发布、稍后补审，避免用户在发布页等待太久。
+      notify_author_label: 违规时通知作者
+      notify_author_help: 内容被判定违规（隐藏/标记）时，向作者发送站内通知说明原因，避免作者困惑。
+      test_button: 测试连接
+  forum:
+    notifications:
+      content_moderated_text: 你的帖子未通过内容审核，已被隐藏。
+      content_moderated_detail: 你的帖子未通过内容审核，已被隐藏。原因：{detail}
