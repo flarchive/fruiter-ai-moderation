@@ -2,13 +2,15 @@
 
 > **Read-only archive of released versions of fruiter/ai-moderation.** Not for installation: use [Packagist](https://packagist.org/packages/fruiter/ai-moderation) or the [upstream repository](https://github.com/CNFruiter/flarum-ai-moderation).
 
-**0** versions archived · Latest: [`v1.1.1`](https://github.com/flarchive/fruiter-ai-moderation/tree/archive/v1.1.1) · License: `MIT` · Flarum: `^1.8.0`
+**3** versions archived · Latest: [`v1.1.1`](https://github.com/flarchive/fruiter-ai-moderation/tree/archive/v1.1.1) · License: `MIT` · Flarum: `^1.8.0`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| — | — | — | — |
+| `v1.0.0` | 2026-08-16 | `^1.8.0` | [Browse](https://github.com/flarchive/fruiter-ai-moderation/tree/archive/v1.0.0) |
+| `v1.1.0` | 2026-08-16 | `^1.8.0` | [Browse](https://github.com/flarchive/fruiter-ai-moderation/tree/archive/v1.1.0) |
+| `v1.1.1` | 2026-08-16 | `^1.8.0` | [Browse](https://github.com/flarchive/fruiter-ai-moderation/tree/archive/v1.1.1) |
 
 Catalog entry: [packages/fruiter-ai-moderation.json](https://github.com/flarchive/archive-index/blob/main/packages/fruiter-ai-moderation.json)
 
